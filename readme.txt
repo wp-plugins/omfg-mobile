@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl
 Tags: mobile, mobile landing pages, html5, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
 Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 1.1.131
+Stable tag: 1.1.14
 
 OMFG Mobile - Easily create, manage and deploy unlimited mobile landing pages with WordPress
 
