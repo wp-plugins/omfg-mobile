@@ -60,6 +60,8 @@ function omfg_mobile_pro_groove_theme_contact_form($atts) {
 					$output .= '<label>Newsletter</label>';
 					$output .= '<input type="checkbox" value="no" name="mailing" /><small>I\'d like to receive the weekly newsletter</small><br />';
 				$output .= '</div>';
+				
+				$output .= '<input type="hidden" value="'.$email.'" name="emailaddress" id="emailaddress" class="emailaddress">';
 			
 			}
 			

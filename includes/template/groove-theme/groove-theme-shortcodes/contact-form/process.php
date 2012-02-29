@@ -22,18 +22,10 @@ if ((isset($_POST['message'])) && (strlen(trim($_POST['message'])) > 0)) {
 	$message = stripslashes(strip_tags($_POST['message']));
 } else {$message = '';}
 
+if ((isset($_POST['emailaddress'])) && (strlen(trim($_POST['emailaddress'])) > 0)) {
+	$emailaddress = stripslashes(strip_tags($_POST['emailaddress']));
+} else {$emailaddress = '';}
 
-if ((isset($_POST['email1'])) && (strlen(trim($_POST['email1'])) > 0)) {
-	$email1 = stripslashes(strip_tags($_POST['email1']));
-} else {$email1 = '';}
-
-if ((isset($_POST['name1'])) && (strlen(trim($_POST['name1'])) > 0)) {
-	$name1 = stripslashes(strip_tags($_POST['name1']));
-} else {$name1 = '';}
-
-if ((isset($_POST['message1'])) && (strlen(trim($_POST['message1'])) > 0)) {
-	$message1 = stripslashes(strip_tags($_POST['message1']));
-} else {$message1 = '';}
 
 $emailaddress = 'jasonbahl@mac.com';
 
