@@ -27,7 +27,7 @@ if ((isset($_POST['emailaddress'])) && (strlen(trim($_POST['emailaddress'])) > 0
 } else {$emailaddress = '';}
 
 
-$emailaddress = 'jasonbahl@mac.com';
+$emailaddress = $emailaddress;
 
 ob_start();
 ?>
