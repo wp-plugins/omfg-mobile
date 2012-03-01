@@ -96,6 +96,10 @@ If you want to develop themes or add-ons to extend OMFG Mobile, send us a messag
 
 == Changelog ==
 
+= 1.1.15 =
+
+Fixed issue with template redirect for the Groove Theme. 
+
 = 1.1.131 = 
 * Fixed minor issue with the Groove Theme Contact Form Shortcode
 
