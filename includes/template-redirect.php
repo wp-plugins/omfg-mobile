@@ -35,7 +35,7 @@ function omfg_mobile_pro_defaulttheme_template_redirect($single_template) {
 
 		if (get_post_meta($defaulttheme->ID, '_omfg_theme_select', true) == 'omfg-mobile-groove-theme') {
     	
-    		$single_template = dirname( __FILE__ ) . '/template/groove-theme/'.$groovetheme_pagetype.'.php'; 
+    		$single_template = dirname( __FILE__ ) . '/template/groove-theme/standard.php'; 
 		
 		}
 		
