@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl
 Tags: mobile, mobile landing pages, html5, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
 Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 1.1.15
+Stable tag: 1.1.16
 
 OMFG Mobile - Easily create, manage and deploy unlimited mobile landing pages with WordPress
 
@@ -95,6 +95,10 @@ If you want to develop themes or add-ons to extend OMFG Mobile, send us a messag
 3. OMFG Mobile Shortcode Generator
 
 == Changelog ==
+
+= 1.1.16 = 
+
+Fixed issue with Contact form Shortcode for the Groove Theme
 
 = 1.1.15 =
 
