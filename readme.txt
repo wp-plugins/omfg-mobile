@@ -1,6 +1,6 @@
 === OMFG Mobile Pro ===
 Contributors: visioniz, jasonbahl
-Tags: mobile, mobile landing pages, html5, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
+Tags: mobile, mobile landing pages, html5, omfgmobile, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
 Requires at least: 3.3
 Tested up to: 3.3
 Stable tag: 1.1.16
