@@ -66,6 +66,9 @@ function omfg_mobile_pro_individual_sites() {
     
     $the_title = get_the_title(); // POST TITLE - USED TO NAME THE NEW POST TYPE
 	
+	$formattedtitle = substr($the_title, 0, 15);
+	$formattedtitle = str_replace(" ", "-", $formattedtitle);
+	
 	$theme = get_post_meta($post->ID, '_omfg_theme_select', true);
     $formattedtheme = str_replace("-", " ", $theme);
     $formattedtheme = ucwords($formattedtheme);
@@ -104,8 +107,8 @@ function omfg_mobile_pro_individual_sites() {
     	'menu_icon' => OMFGMOBILEPRO . '/images/omfgwp-posttypes-icon.png',
     );
 	
-	register_post_type( 'omfg-'.$post->post_name.'', $args );
-
+	register_post_type( 'omfg-'.$formattedtitle.'', $args );
+	
 	// CREATES A SITE TAXONOMY 
 	// TERM FOR THE NEW POST TYPE
 	// ====================================== -->	
