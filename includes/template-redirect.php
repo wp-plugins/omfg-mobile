@@ -38,12 +38,6 @@ function omfg_mobile_pro_defaulttheme_template_redirect($single_template) {
     		$single_template = dirname( __FILE__ ) . '/template/groove-theme/standard.php'; 
 		
 		}
-		
-		if (get_post_meta($defaulttheme->ID, '_omfg_theme_select', true) == 'omfg-mobile-artist-theme') {
-    	
-    		$single_template = dirname( __FILE__ ) . '/template/artist-theme/page.php'; 
-		
-		}
 	
 	}
 
@@ -51,4 +45,4 @@ function omfg_mobile_pro_defaulttheme_template_redirect($single_template) {
 
 }
 
-add_filter( "single_template", "omfg_mobile_pro_defaulttheme_template_redirect", 100);
+add_filter( "single_template", "omfg_mobile_pro_defaulttheme_template_redirect", 1);
