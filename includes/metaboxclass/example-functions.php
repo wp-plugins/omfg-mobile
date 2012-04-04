@@ -664,7 +664,7 @@ function cmb_initialize_cmb_meta_boxes() {
 /* CREATES THE OMFG PAGE CONTENT META BOX FOR ALL OMFG MOBILE PAGES
 /*--------------------------------------------------------------------------------*/
 
-add_action( 'admin_init', 'omfg_mobile_pro_page_content_register_meta_box', 9999);
+add_action( 'admin_init', 'omfg_mobile_pro_page_content_register_meta_box');
 
 function omfg_mobile_pro_page_content_register_meta_box()
 {
@@ -697,7 +697,6 @@ function omfg_mobile_pro_page_content_register_meta_box()
 			)
 		);
 		// Other meta boxes go here
-		
 
 	foreach ( $meta_boxes as $meta_box )
 	{
@@ -705,24 +704,16 @@ function omfg_mobile_pro_page_content_register_meta_box()
 	}
 }
 
-/*-------------------------------------------------------------------------------------*/
-/* QR Code Preview Meta Box
-/*-------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------*/
+/* CREATES THE OMFG PAGE QR CODE PREVIEW
+/*--------------------------------------------------------------------------------*/
 
-add_filter( 'cmb_meta_boxes', 'omfg_mobile_pro_qrcode_metabox' );
-/**
- * Define the metabox and field configurations.
- *
- * @param  array $meta_boxes
- * @return array
- */
-function omfg_mobile_pro_qrcode_metabox( array $meta_boxes ) {
+add_action( 'admin_init', 'omfg_mobile_pro_page_qrcode_meta_box');
 
-	// Start with an underscore to 
-	// hide fields from custom fields list
-	// ================================ -->
-	$prefix = '_omfg_';
-
+function omfg_mobile_pro_page_qrcode_meta_box()
+{
+	if ( ! class_exists( 'RW_Meta_Box' ) )
+		return;
 
 	global $post, $wp_query, $wpdb;
 
@@ -732,47 +723,29 @@ function omfg_mobile_pro_qrcode_metabox( array $meta_boxes ) {
 	$post_types = get_post_types();
 	$post_type = get_post_type_object( get_post_type($post_id) );
 	$posttypes = get_post_types( array( 'menu_icon' => OMFGMOBILEPRO . '/images/omfgwp-posttypes-icon.png' ) );
-	
-	foreach ( $posttypes as $posttype ) {
-	
-		// CREATES THE THEME SELECT OPTION
-		// ================================ -->
-		$meta_boxes[] = array(
-			'id'         => 'omfg_mobile_pro_qrcode_metabox',
-			'title'      => 'Mobile Page Preview',
-			'pages'      => array($posttype),
-			'context'    => 'side',
-			'priority'   => 'low',
-			'show_names' => false,
-			'fields'     => array(
-		
-				// CREATES SECTION
-				array(
-					'type' => 'section',
-					'id' => 'qrcode_preview',
-				),
-			
-					// SELECT A THEME (PULLS THEMES FROM THEME TAXONOMY)
-					array(
-						'name'     => 'QR Code Preview',
-						'desc'     => '',
-						'id'       => $prefix . 'qr_code_preview',
-						'type'     => 'qrcode',
-						'taxonomy' => 'omfg_mobile_pro_themes', // Taxonomy Slug
-					),
-			
-				// CLOSES SECTION
-				array(
-					'type' => 'close',
-				),
-	
-			),
-		);
-		
-	}
 
-	return $meta_boxes;
+		// 1st meta box
+		$meta_boxes[] = array(
+			'id' => 'omfg_mobile_pro_page_qrcode_metabox',
+			'title' => 'Mobile Page Preview',
+			'pages' => $posttypes,
+			'priority' => 'low',
+			'context' => 'side',
+
+			'fields' => array(
+				array(
+					'name'		=> '',
+					'id'		=> $prefix . 'qr_code_preview',
+					'type'		=> 'qr_code',
+				),
+				// Other fields go here
+			)
+		);
+		// Other meta boxes go here
+
+	foreach ( $meta_boxes as $meta_box )
+	{
+		new RW_Meta_Box( $meta_box );
+	}
 }
 
-/*-------------------------------------------------------------------------------------*/
-/*-------------------------------------------------------------------------------------*/

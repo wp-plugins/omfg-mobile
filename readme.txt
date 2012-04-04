@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl
 Tags: mobile, mobile landing pages, html5, omfgmobile, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
 Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 1.1.19
+Stable tag: 1.1.20
 
 OMFG Mobile - Easily create, manage and deploy unlimited mobile landing pages with WordPress
 
@@ -96,14 +96,8 @@ If you want to develop themes or add-ons to extend OMFG Mobile, send us a messag
 
 == Changelog ==
 
-= 1.1.19 =
-Fixes an issue with site name update. (Site names MUST be shorter than 15 characters now). 
-
-= 1.1.18 =
-Fixes issue with QR Code preview box on OMFG Mobile edit pages.
-
-= 1.1.17 =
-Add support for the OMFG Mobile Responsive Gallery add-on, available at OMFGMobile.com Fixed issue with Shortcode Generator, which caused conflict with other instances of the generator. Fixed issue with length of Site names. Before, Long site names (over 15 characters) would not work. Now site names can be any length.
+= 1.1.20 = 
+Fixes some issues with the custom meta boxes not showing up
 
 = 1.1.16 = 
 

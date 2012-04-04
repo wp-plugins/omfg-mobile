@@ -647,17 +647,13 @@ class cmb_Meta_Box {
 
 				// QR Code Box
 				// ============================== -->
-				case 'qrcode':
+				case 'qr_code':
 					
-					global $post, $wp_query;
-					$post_id = $wp_query->post->ID;
-					$permalink = get_permalink($post_id);
+					$permalink = get_permalink();
 				
-					$html .= "Scan the code with a QR Code scanner on your mobile device to preview the page.";
-					$html .= "<img src='https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=".$permalink."&choe=UTF-8' alt='QR code'>";
-					$html .= "<a href='".$permalink."' target='_blank'>View Page</a> | <a href='http://www.qrlicious.com/completely/' target='_blank'>Order a Custom QR Code</a>";
-					$html .= "<br/>";
-					echo $html;	
+					echo "<img src='https://chart.googleapis.com/chart?chs=185x185&cht=qr&chl=".$permalink."&choe=UTF-8' alt='QR code'>";
+					echo "<a href='".$permalink."' target='_blank'>View Page</a>";
+					echo "<br/>";
 					break;
 					
 				/* ---------------------------------------------------------------------- */
