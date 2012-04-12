@@ -58,6 +58,9 @@
 			// Sidebar Options
 			// --------------------------------------------- //
 			
+			// Show or Hide Slide Out Menu
+			$sidebar_menu 		= get_post_meta($post->ID, '_groovetheme_slide_out_menu', true);
+			
 			// Menu Section
 			$link_section 		= get_post_meta($post->ID, '_groovetheme_links_section', true);
 			$link_orderby 		= get_post_meta($post->ID, '_groovetheme_links_orderby', true);
@@ -193,6 +196,8 @@
 <body>
 
 <div id="wrapper">
+	
+<?php if ($sidebar_menu != 'hide') { ?>
 	
 	<!-- Sidebar Begin
 	============================================ -->
@@ -338,6 +343,8 @@
 	</aside>
 	<!-- Sidebar End
 	============================================ -->
+
+<?php } ?><!-- Endif Sidebar Menu != hide -->
 	
 	<!-- Main Content Begin
 	============================================ -->
@@ -346,9 +353,19 @@
 	
 			<!-- Sidebar Toggle & Tabbed Navigation -->
 			<header>
-				<div class="controls">
-					<a title="Toggle Sidebar"><img src="<?php echo $pluginroot; ?>images/icons/icon-toggle.png" alt="Toggle Sidebar" /></a>
-				</div>
+				
+				<?php if ($sidebar_menu != 'hide') { ?><!-- Show Sidebar Toggle if Side Menu is NOT hidden -->
+					
+					<div class="controls">
+					
+						<a title="Toggle Sidebar">
+							<img src="<?php echo $pluginroot; ?>images/icons/icon-toggle.png" alt="Toggle Sidebar" />
+						</a>
+					
+					</div>
+				
+				<?php } ?><!-- END IF - Show Sidebar Toggle if Side Menu is NOT hidden -->
+				
 				<ul>
 				
 					<?php if ($home_page != '') {?>				

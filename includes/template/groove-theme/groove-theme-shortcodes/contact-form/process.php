@@ -40,7 +40,7 @@ ob_start();
 <body>
 <table width="550" border="0" cellspacing="2" cellpadding="2">
   <tr bgcolor="#ffffff">
-    Comment Submission from the Skin Metro Mobile Landing Page:
+    Contact Form Submission from Mobile Landing Page:
   </tr>
   
   <tr bgcolor="#ffffff">
@@ -87,9 +87,9 @@ $mail->Body     =  $body;
 $mail->AltBody  =  "This is the text-only body";
 
 if(!$mail->Send()) {
-	$recipient = ''.$emailaddress.'';
-	$subject = 'Contact form failed';
-	$content = $body;	
+	$recipient 	= ''.$emailaddress.'';
+	$subject 	= 'Contact form failed';
+	$content 	= $body;	
   mail($recipient, $subject, $content, "From: ".$emailaddress."\r\nReply-To: $email\r\nX-Mailer: DT_formmail");
   exit;
 }

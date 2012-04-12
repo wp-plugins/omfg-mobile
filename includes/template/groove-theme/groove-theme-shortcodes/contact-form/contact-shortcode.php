@@ -51,6 +51,8 @@ function omfg_mobile_pro_groove_theme_contact_form($atts) {
 				$output .= '<label for="message">Message</label>';
 				$output .= '<textarea cols="30" rows="4" id="message" class="message" name="message"></textarea>';
 			$output .= '</div>';
+			
+			$output .= '<input type="hidden" value="'.$email.'" name="emailaddress" id="emailaddress" class="emailaddress">';
 		
 			// NEWSLETTER SUBSCRIBE CHECKBOX
 			// ================================= -->
@@ -60,8 +62,6 @@ function omfg_mobile_pro_groove_theme_contact_form($atts) {
 					$output .= '<label>Newsletter</label>';
 					$output .= '<input type="checkbox" value="no" name="mailing" /><small>I\'d like to receive the weekly newsletter</small><br />';
 				$output .= '</div>';
-				
-				$output .= '<input type="hidden" value="'.$email.'" name="emailaddress" id="emailaddress" class="emailaddress">';
 			
 			}
 			

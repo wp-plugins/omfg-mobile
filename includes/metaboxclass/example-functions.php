@@ -160,6 +160,19 @@ function omfg_mobile_pro_starting_metabox( array $meta_boxes ) {
 
 				// Sidebar Links Section
 				array(
+					'name'     => 'Slide Out Menu',
+					'desc'     => 'Show the Slide-Out Menu',
+					'id'       => $groovetheme . 'slide_out_menu',
+					'desc'     => 'You can enable or disable the slide-out menu altogether.',
+					'type'     => 'select',
+					'options'  => array(
+						array('name' => 'Use Slide Out Menu', 'value' => 'show'),
+						array('name' => 'Do Not Use the Slide Out Menu', 'value' => 'hide')			
+					)
+				),
+				
+				// Sidebar Links Section
+				array(
 					'name'     => 'Links Section',
 					'desc'     => 'Display links to other pages within this site in the slide-out menu',
 					'id'       => $groovetheme . 'links_section',
@@ -748,4 +761,3 @@ function omfg_mobile_pro_page_qrcode_meta_box()
 		new RW_Meta_Box( $meta_box );
 	}
 }
-
