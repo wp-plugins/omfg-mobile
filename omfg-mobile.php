@@ -3,7 +3,7 @@
 Plugin Name: OMFG Mobile Pro
 Plugin URI: http://omfgmobile.com/
 Description: Easily, create, manage and deploy unlimited mobile landing pages with WordPress.
-Version: 1.1.21
+Version: 1.1.22
 Author: Visioniz
 Author URI: http://visioniz.com/
 */
@@ -14,6 +14,22 @@ DEFINES PLUGIN CONSTANTS
 
 define('OMFGMOBILEPRO', plugin_dir_url(__FILE__));
 $omfgmobilepro_pluginroot = plugin_dir_url(__FILE__);
+
+/* -------------------------------------------------------------------------*/
+/* Creates Template Directory variable to use in 
+/* jQuery files (shortcode generator, specifically)
+/* -------------------------------------------------------------------------*/
+
+function omfg_mobile_pro_admin_jquery_plugin_root(){
+
+	echo '
+    <script type="text/javascript">
+		var omfgPluginDir = "'. OMFGMOBILEPRO .'";
+	</script>';
+	
+}
+
+add_action('admin_head','omfg_mobile_pro_admin_jquery_plugin_root');
 
 /*-------------------------------------------------------------------------
 INCLUDES ESSENTIAL FILES

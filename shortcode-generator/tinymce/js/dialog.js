@@ -15,7 +15,7 @@ var scnDialogHelper = {
     loadShortcodeDetails: function () {
         if (scnSelectedShortcodeType) {
             var a = this;
-            jQuery.getScript("../wp-content/plugins/omfg-mobile/shortcode-generator/sc/" + scnSelectedShortcodeType + ".js", function () {
+            jQuery.getScript(omfgPluginDir + "shortcode-generator/sc/" + scnSelectedShortcodeType + ".js", function () {
                 a.initializeDialog()
             })
         }
@@ -202,7 +202,7 @@ var scnDialogHelper = {
     previewAction: function (a) {
         jQuery(a).hasClass("scn-validation-marker") && this.validatelinkFor(a);
         jQuery("#scn-preview h3:first").addClass("scn-loading");
-        jQuery("#scn-preview-iframe").attr("src", "../wp-content/plugins/omfg-mobile/shortcode-generator/preview-shortcode-external.php?shortcode=" + encodeURIComponent(this.makeShortcode()))
+        jQuery("#scn-preview-iframe").attr("src", omfgPluginDir + "shortcode-generator/preview-shortcode-external.php?shortcode=" + encodeURIComponent(this.makeShortcode()))
     },
     validatelinkFor: function (a) {
         var b = jQuery(a);

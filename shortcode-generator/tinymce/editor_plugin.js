@@ -25,7 +25,7 @@
             if (d == "scn_button") {
                 d = e.createMenuButton("scn_button", {
                     title: "Insert Shortcode",
-                    image: "../wp-content/plugins/omfg-mobile/shortcode-generator/tinymce/img/icon.png",
+                    image: omfgPluginDir + "shortcode-generator/tinymce/img/icon.png",
                     icons: false
                 });
                 var a = this;

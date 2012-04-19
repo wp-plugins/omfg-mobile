@@ -24,7 +24,7 @@
             if (d == "groove_button") {
                 d = e.createMenuButton("groove_button", {
                     title: "Insert Shortcode",
-                    image: "../wp-content/plugins/omfg-mobile/includes/template/groove-theme/shortcode-generator/tinymce/img/menu-icon.png",
+                    image: omfgPluginDir + "includes/template/groove-theme/shortcode-generator/tinymce/img/menu-icon.png",
                     icons: false
                 });
                 var a = this;
