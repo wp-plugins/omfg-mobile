@@ -208,7 +208,7 @@ FUNCTION TO GET THE OMFG MOBILE THEME TAXONOMY ID
 -------------------------------------------------------------------------*/
 
 function get_omfg_category_id($cat_name){
-	$term = get_term_by('name', $cat_name, 'omfg_mobile_themes');
+	$term = get_term_by('name', $cat_name, 'omfg_mobile_pro_themes');
 	return $term->term_id;
 }
 
