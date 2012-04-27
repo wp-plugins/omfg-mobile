@@ -812,75 +812,17 @@ a.button.brown span.btn_caption {
 /* End Button Styles */
 
 	
-/* @group Tabs */
-
-	ul.tabs { 
-		display: block;
-		margin: 0 0 5px 0;
-		padding: 0;
-		border-bottom: solid 1px #ddd; }
-	ul.tabs li { 
-		display: block;
-		width: auto;
-		height: 30px;
-		padding: 0;
-		float: left;
-		margin-bottom: 0; }
-	ul.tabs li a { 
-		display: block; 
-		text-decoration: none;
-		width: auto; 
-		height: 29px; 
-		padding: 0px 20px; 
-		line-height: 30px; 
-		border: solid 1px #ddd;
-		border-width: 1px 0 0 1px; 
-		margin: 0;  
-		background: #f5f5f5;
-		/*font-size: 13px;*/ }
-	ul.tabs li a.active { 
-		background: #fff; 
-		height: 30px;
-		position: relative;
-		top: -4px;
-		padding-top: 4px;
-		border-right-width: 1px;
-		margin: 0 -1px 0 0;
-		color: #111;
-		-moz-border-radius-topleft: 2px;
-		-webkit-border-top-left-radius: 2px;
-		border-top-left-radius: 2px;
-		-moz-border-radius-topright: 2px;
-		-webkit-border-top-right-radius: 2px;
-		border-top-right-radius: 2px; }
-	ul.tabs li:first-child a {
-		-moz-border-radius-topleft: 2px;
-		-webkit-border-top-left-radius: 2px;
-		border-top-left-radius: 2px; }
-	ul.tabs li:last-child a {
-		border-width: 1px 1px 0 1px;
-		-moz-border-radius-topright: 2px;
-		-webkit-border-top-right-radius: 2px;
-		border-top-right-radius: 2px; }
-	
-	ul.tabs-content { margin: 0; display: block; padding: 5px; }
-	ul.tabs-content > li { display:none; list-style: none; }
-	ul.tabs-content > li.active { display: block; border: none;}
-		
-	/* Clearfixing tabs for beautiful stacking */
-	ul.tabs:before,
-	ul.tabs:after {
-	  content: '\0020';
-	  display: block;
-	  overflow: hidden;
-	  visibility: hidden;
-	  width: 0;
-	  height: 0; }
-	ul.tabs:after {
-	  clear: both; }
-	ul.tabs {
-	  zoom: 1; }
-
+/* Tabs
+----------------------------------*/
+.ui-tabs { padding: .2em; zoom: 1; }
+.ui-tabs .ui-tabs-nav { list-style: none; position: relative; padding: .2em .2em 0; height: 35px; }
+.ui-tabs .ui-tabs-nav li { position: relative; float: left; border-bottom-width: 0 !important; padding: 0; }
+.ui-tabs .ui-tabs-nav li a { float: left; text-decoration: none; padding: .5em 1em; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected { padding-bottom: .1em; border-bottom-width: 0; }
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-state-processing a { cursor: text; }
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a { cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel { padding: 1em 1.4em; display: block; border-width: 0; background: none; }
+.ui-tabs .ui-tabs-hide { display: none !important; }
 
 /* @end */
 

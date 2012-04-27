@@ -19,4 +19,29 @@ jQuery(document).ready(function($){
 	
 	});
 	
+	/* ------------------------------------------------------------------------- */
+	/* Validate Title Field (Not REAL Validation, but a visual warning)
+	/* ------------------------------------------------------------------------- */
+	
+	$('#title').change(function(){
+	
+		var value = $('#title').val();
+		if ( value.length > 20 ) {
+    	
+    		$('#title').css('border', '1px solid #cc3333');
+    		$('#title').css('color', '#cc3333');
+    		$('#title').css('background', '#fffccc');
+    		$('#titlewrap').prepend('<p class="errornotice">OMFG Mobile Site Titles Must be Less than 20 Characters</p>');
+    	
+    	} else {
+    	
+    		$('#title').css('border', '1px solid #cccccc');
+    		$('#title').css('color', '#666');
+    		$('#title').css('background', '#fff');
+    		$('.errornotice').html('');
+    	
+    	}
+	
+	}); 	
+		
 }); // END JQUERY READY FUNCTION

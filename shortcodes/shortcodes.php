@@ -18,7 +18,11 @@ function omfg_mobile_pro_shortcode_js() {
 
 	global $omfgmobilepro_pluginroot;
 
-	echo '<script type="text/javascript" src="'.$omfgmobilepro_pluginroot.'shortcodes/shortcodes.js"></script>';
+	$output .= '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>';
+		
+		$output .= '<script type="text/javascript" src="'.$omfgmobilepro_pluginroot.'shortcodes/shortcodes.js"></script>';
+		
+		echo $output;
 
 }
 

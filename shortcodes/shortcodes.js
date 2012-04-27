@@ -3,7 +3,9 @@
 
 jQuery(document).ready(function($){
 
-
+	// TABS
+	$('.tabcontainer').tabs();
+	
 	/* Toggle Slides
 	================================================== */
 	$(".toggle_container").hide(); 

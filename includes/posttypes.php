@@ -53,6 +53,7 @@ function omfg_mobile_pro_individual_sites() {
 	// ===================================== -->
 	$mobile_sites_query = new WP_Query(array(
     'post_type' => 'omfg-mobile-pro',
+    'post_status' => 'publish'
 	));
 
 	// STARTS THE LOOP 
@@ -144,7 +145,7 @@ function omfg_mobile_pro_site_settings_menu() {
 	// Run Query
 	// ===================================== -->
 	$mobile_sites = new WP_Query(array(
-    'post_type' => 'omfg-mobile-pro',
+    'post_type' => 'omfg-mobile-pro'
 	));
 
 	// STARTS THE LOOP 
@@ -158,8 +159,8 @@ function omfg_mobile_pro_site_settings_menu() {
     
     	$the_title = get_the_title(); // POST TITLE - USED TO NAME THE NEW POST TYPE		
 
-		// ADDS THE SLIDESHOWS AS SUB-MENUS TO
-		// THE SLIDESHOWS POST TYPE
+		// ADDS THE SITES AS SUB-MENUS TO
+		// THE OMFG MOBILE PRO POST TYPE
 		// ===================================== --> 
 		add_submenu_page( 'edit.php?post_type=omfg-mobile-pro', __(''.$the_title.' Settings'), __(''.$the_title.' Settings'), 'edit_posts', 'post.php?post='.$post->ID.'&action=edit');
 		

@@ -6,9 +6,11 @@
 
 function omfg_mobile_pro_groove_theme_shortcode_styles() {
 
-	global $omfgmobilepro_pluginroot;
+	global $post, $omfgmobilepro_pluginroot;
 	
-	if (get_post_type($post) == 'omfg-groove-theme') {
+	$post_type = get_post_type_object( get_post_type($post) );
+	
+	if ($post_type->description == 'OMFG Mobile Site - Omfg Mobile Groove Theme') {
 
 		echo '<link rel="stylesheet" href="'.$omfgmobilepro_pluginroot.'includes/template/groove-theme/groove-theme-shortcodes/shortcodes.css">';
 	
@@ -20,11 +22,17 @@ add_action('omfg_mobile_pro_styles','omfg_mobile_pro_groove_theme_shortcode_styl
 
 function omfg_mobile_pro_groove_theme_shortcode_js() {
 
-	global $omfgmobilepro_pluginroot;
-
-	if (get_post_type($post) == 'omfg-groove-theme') {
+	global $post, $omfgmobilepro_pluginroot;
 	
-		echo '<script type="text/javascript" src="'.$omfgmobilepro_pluginroot.'includes/template/groove-theme/groove-theme-shortcodes/shortcodes.js"></script>';
+	$post_type = get_post_type_object( get_post_type($post) );
+	
+	if ($post_type->description == 'OMFG Mobile Site - Omfg Mobile Groove Theme') {
+	
+		$output .= '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>';
+		
+		$output .= '<script type="text/javascript" src="'.$omfgmobilepro_pluginroot.'includes/template/groove-theme/groove-theme-shortcodes/shortcodes.js"></script>';
+		
+		echo $output;
 	
 	}
 

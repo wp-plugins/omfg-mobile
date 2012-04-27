@@ -830,7 +830,7 @@ a.button.brown span.btn_caption {
 		display: block; 
 		text-decoration: none;
 		width: auto; 
-		height: 29px; 
+		height: 22px; 
 		padding: 0px 20px; 
 		line-height: 30px; 
 		border: solid 1px #ddd;
@@ -840,9 +840,9 @@ a.button.brown span.btn_caption {
 		font-size: 13px; }
 	ul.tabs li a.active { 
 		background: #fff; 
-		height: 30px;
+		height: 24px;
 		position: relative;
-		top: -4px;
+		top: 0px;
 		padding-top: 4px;
 		border-right-width: 1px;
 		margin: 0 -1px 0 0;
