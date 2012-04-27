@@ -122,30 +122,13 @@ function register_taxonomy_omfg_mobile_pro_sites() {
 REGISTERS OMFG MOBILE THEME TAXONOMY ON ACTIVATION
 -------------------------------------------------------------------------*/
 
-// DEFAULT THEME
-// ============================ -->
-function omfg_mobile_default_add_theme_taxonomy() {
-
-	wp_insert_term(
-  		'Default Theme', 			// the term
-   		'omfg_mobile_pro_themes', 	// the taxonomy
-  		array(
-    		'description' => 'Default Theme for the OMFG Mobile Landing Page Plugin.',
-    		'slug' => 'omfg-mobile-default-theme'
-  		)
-	);
-
-}
-
-//add_action('init','omfg_mobile_default_add_theme_taxonomy');
-
 // GROOVE THEME
 // ============================ -->
 function omfg_mobile_groove_add_theme_taxonomy() {
 
 	wp_insert_term(
   		'Groove Theme', 				// the term
-   		'omfg_mobile_pro_themes', 	// the taxonomy
+   		'omfg_mobile_pro_themes', 		// the taxonomy
   		array(
     		'description' => 'Groove Theme for the OMFG Mobile Landing Page Plugin.',
     		'slug' => 'omfg-mobile-groove-theme'
@@ -155,23 +138,6 @@ function omfg_mobile_groove_add_theme_taxonomy() {
 }
 
 add_action('init','omfg_mobile_groove_add_theme_taxonomy');
-
-// ARTIST THEME
-// ============================ -->
-function omfg_mobile_artist_add_theme_taxonomy() {
-
-	wp_insert_term(
-  		'Artist Theme', 				// the term
-   		'omfg_mobile_pro_themes', 	// the taxonomy
-  		array(
-    		'description' => 'Artist Theme for the OMFG Mobile Landing Page Plugin.',
-    		'slug' => 'omfg-mobile-artist-theme'
-  		)
-	);
-
-}
-
-//add_action('init','omfg_mobile_artist_add_theme_taxonomy');
 
 /*-------------------------------------------------------------------------
 Sets Up Action Hooks
@@ -245,3 +211,23 @@ function get_omfg_category_id($cat_name){
 	$term = get_term_by('name', $cat_name, 'omfg_mobile_themes');
 	return $term->term_id;
 }
+
+/*-------------------------------------------------------------------------
+FUNCTION TO LIMIT THE TITLE OF OMFG MOBILE PRO POSTS (20 Character Max)
+-------------------------------------------------------------------------*/
+
+function omfg_mobile_pro_max_title_length($title){
+
+    global $post;
+
+    $title = $post->post_title;
+
+    if (strlen($title) >= 20 ) //set this to the maximum number of words
+        wp_die( __('Error: your post title is over the maximum word count.') );
+
+}
+
+add_action('publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');
+add_action('new_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');		
+add_action('draft_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');		
+add_action('pending_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');
