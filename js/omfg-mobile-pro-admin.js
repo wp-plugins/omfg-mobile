@@ -26,12 +26,12 @@ jQuery(document).ready(function($){
 	$('#title').change(function(){
 	
 		var value = $('#title').val();
-		if ( value.length > 20 ) {
+		if ( value.length > 15 ) {
     	
     		$('#title').css('border', '1px solid #cc3333');
     		$('#title').css('color', '#cc3333');
     		$('#title').css('background', '#fffccc');
-    		$('#titlewrap').prepend('<p class="errornotice">OMFG Mobile Site Titles Must be Less than 20 Characters</p>');
+    		$('#titlewrap').prepend('<p class="errornotice">OMFG Mobile Site Titles Must be Less than 15 Characters</p>');
     	
     	} else {
     	

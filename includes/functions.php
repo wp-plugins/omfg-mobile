@@ -222,8 +222,8 @@ function omfg_mobile_pro_max_title_length($title){
 
     $title = $post->post_title;
 
-    if (strlen($title) >= 20 ) //set this to the maximum number of words
-        wp_die( __('Error: your post title is over the maximum word count.') );
+    if (strlen($title) > 15 ) //set this to the maximum number of words
+        wp_die( __('Error: your post title is over the 15 character limit for OMFG Mobile sites.') );
 
 }
 
