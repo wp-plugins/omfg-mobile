@@ -3,7 +3,7 @@ Contributors: visioniz, jasonbahl
 Tags: mobile, mobile landing pages, html5, omfgmobile, mobi, phones, responsive, sites, wptouch, qrcodes, qr, visioniz, qrlicious
 Requires at least: 3.3
 Tested up to: 3.3
-Stable tag: 1.1.23
+Stable tag: 1.1.24
 
 OMFG Mobile - Easily create, manage and deploy unlimited mobile landing pages with WordPress
 
@@ -95,6 +95,9 @@ If you want to develop themes or add-ons to extend OMFG Mobile, send us a messag
 3. OMFG Mobile Shortcode Generator
 
 == Changelog ==
+
+= 1.1.24 =
+Fixed Tabs Shortcode
 
 = 1.1.23 =
 Adds validation to OMFG Mobile post type title. The titles must be 20 characters or less, and this helps users not create anything higher than 20 characters. 

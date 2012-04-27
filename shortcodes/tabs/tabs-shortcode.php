@@ -4,57 +4,45 @@
 Tabs
 ============================*/
 
-add_shortcode( 'omfg_tabgroup', 'vz_tabgroup' );
-
-function vz_tabgroup( $atts, $content ){
+function vz_tab_group( $atts, $content ){
 	
-$GLOBALS['tab_count'] = 0;
-do_shortcode( $content );
+	$GLOBALS['tab_count'] = 0;
 
-if( is_array( $GLOBALS['tabs'] ) ){
+	do_shortcode( $content );
+
+	if( is_array( $GLOBALS['tabs'] ) ){
 	
-foreach( $GLOBALS['tabs'] as $tab ){
-$tabs[] = '
-	<li><a href="#'.$tab['id'].'">'.$tab['title'].'</a></li>
-		';
-$panes[] = '
-	<li id="'.$tab['id'].'Tab">'.$tab['content'].'</li>
-		';
+		foreach( $GLOBALS['tabs'] as $tab ){
+			
+			// Converts Tab Title into Lowercase with No Spaces
+			$tabtitle = $tab['title'];
+			$tabtitle = $pagelink = str_replace(" ","_",$tabtitle);
+			$tabtitle = strtolower($tabtitle);
+		
+			$tabs[] = '<li><a class="" href="#'.$tabtitle.'">'.$tab['title'].'</a></li>';
+			$panes[] = '<div id="'.$tabtitle.'">'.do_shortcode($tab['content']).'</div>';
+		
+		}
+		
+		$return = '<div class="tabcontainer"><ul class="tabs">'.implode( "\n", $tabs ).'</ul>'.implode( "\n", $panes ).'</div>'	;
+	}
+	
+	return $return;
 }
 
-$return .= "\n".'
-<!-- the tabs -->
+add_shortcode( 'omfg_tabgroup', 'vz_tab_group' );
 
-<div style="width:98%; margin: 5px auto;"> 
-	<ul class="tabs">
-	'.implode( "\n", $tabs ).'
-	</ul>'."\n".'
 
-	<!-- tab "panes" -->
-	<ul class="tabs-content">
-	'.implode( "\n", wpautop(do_shortcode($panes)) ).'
-	</ul>'."\n"
+function vz_tab( $atts, $content ){
 	
-."</div>";
-}
+	extract(shortcode_atts(array(
+		'title' => 'Tab %d'
+	), $atts));	
 
-return $return;
+	$x = $GLOBALS['tab_count'];
+	$GLOBALS['tabs'][$x] = array( 'title' => sprintf( $title, $GLOBALS['tab_count'] ), 'content' =>  $content );
 
+	$GLOBALS['tab_count']++;
 }
 
 add_shortcode( 'omfg_tab', 'vz_tab' );
-
-function vz_tab( $atts, $content ){
-extract(shortcode_atts(array(
-	'title' => '%d',
-	'id' => '%d'
-), $atts));
-
-$x = $GLOBALS['tab_count'];
-$GLOBALS['tabs'][$x] = array(
-	'title' => sprintf( $title, $GLOBALS['tab_count'] ),
-	'content' =>  $content,
-	'id' =>  $id );
-
-$GLOBALS['tab_count']++;
-}
