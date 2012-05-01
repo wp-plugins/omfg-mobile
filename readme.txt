@@ -96,6 +96,9 @@ If you want to develop themes or add-ons to extend OMFG Mobile, send us a messag
 
 == Changelog ==
 
+= 1.1.25 =
+Added a Menu Creator for use in Add-On Themes.
+
 = 1.1.24 =
 Fixed Tabs Shortcode
 
