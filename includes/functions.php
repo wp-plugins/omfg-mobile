@@ -5,9 +5,15 @@ Sets Up Admin jQuery
 
 function omfg_mobile_pro_theme_select_script() {
 	
-	global $current_screen;
-		
-	if( $current_screen->post_type == 'omfg-mobile-pro' ) {
+	global $post, $wp_query, $wpdb, $current_screen;
+
+	$post_id 	= $wp_query->post->ID;
+	$post_type 	= get_post_type_object( get_post_type($post_id) );
+	
+	$post_type = get_post_type_object(get_post_type($post));
+	
+	// Adds Admin jQuery to OMFG Mobile Pro post type, and ALL Post Types with the OMFG Mobile Pro icon	
+	if( ($current_screen->post_type == 'omfg-mobile-pro') || ( $post_type->menu_icon == OMFGMOBILEPRO . '/images/omfgwp-posttypes-icon.png' )  ) {
 
 		wp_register_script('omfg-mobile-pro-admin', OMFGMOBILEPRO . 'js/omfg-mobile-pro-admin.js', 'jquery');
 		wp_enqueue_script('omfg-mobile-pro-admin');
@@ -35,7 +41,34 @@ function omfg_mobile_pro_groovetheme_admin_script() {
 }
     
 add_action('admin_print_scripts', 'omfg_mobile_pro_groovetheme_admin_script');
+
+/*-------------------------------------------------------------------------
+Get Current Post Type In Admin Pages
+-------------------------------------------------------------------------*/
+
+function get_current_post_type() {
+  global $post, $typenow, $current_screen;
+
+  //we have a post so we can just get the post type from that
+  if ( $post && $post->post_type )
+    return $post->post_type;
     
+  //check the global $typenow - set in admin.php
+  elseif( $typenow )
+    return $typenow;
+    
+  //check the global $current_screen object - set in sceen.php
+  elseif( $current_screen && $current_screen->post_type )
+    return $current_screen->post_type;
+  
+  //lastly check the post_type querystring
+  elseif( isset( $_REQUEST['post_type'] ) )
+    return sanitize_key( $_REQUEST['post_type'] );
+
+  //we do not know the post type!
+  return null;
+} 
+
 /*-------------------------------------------------------------------------
 Registers OMFG Theme Taxonomy
 -------------------------------------------------------------------------*/
@@ -231,3 +264,61 @@ add_action('publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');
 add_action('new_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');		
 add_action('draft_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');		
 add_action('pending_to_publish_omfg-mobile-pro', 'omfg_mobile_pro_max_title_length');
+
+/*-------------------------------------------------------------------------
+OMFG Mobile Menu
+-------------------------------------------------------------------------*/
+
+function omfg_mobile_pro_menu() {
+
+	global $post, $wpdb, $wp_query, $omfgmobilepro_pluginroot;
+	
+	// Plugin Root & Site Root
+	$pluginroot = plugin_dir_url(__FILE__);
+	$plugin_dir_root = get_bloginfo('url');
+	
+	// Post ID
+	$postid = $wp_query->post->ID;
+	
+	// Post Type
+	$posttype = get_post_type($postid);
+	
+	// Post type without first 5 characters (omfg-)
+	$posttype = substr($posttype, 5);
+	
+	$the_permalink = get_permalink($postid);
+	
+	// THEME VARIABLES
+	// ======================================== -->
+	// Get Theme Settings
+	query_posts( "post_type=omfg-mobile-pro&posts_per_page=1&name=".$posttype."" );
+	while ( have_posts() ) : the_post();
+		
+		global $post; 
+		
+		$count = 0;
+		$omfg_menu = get_post_meta($post->ID, '_omfg_menu', true);
+		
+		foreach($omfg_menu as $key => $item) {
+									 
+			$title 	= get_the_title($item);
+			$link 	= get_permalink($item);
+			
+			if ($postid == $item) { $current = ' current-page'; } else { }
+										
+			$output .= '<li id="list_items_' . $item . '" class="list_item menuitem'.$current.'">';
+				$output .= '<a href="'.$link.'">'. $title .'</a>';
+				//$output .= '' . $postid . '';
+			$output .= '</li>';
+			$count++;
+									
+		}
+
+	// END THEME VARIABLES
+	// ======================================== -->
+	endwhile; 			// End Query
+	wp_reset_query(); 	// Reset Query
+	
+	echo '<div class="omfg-menu">'.$output.'</div>';
+
+}

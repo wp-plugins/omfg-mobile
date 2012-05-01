@@ -657,7 +657,103 @@ class cmb_Meta_Box {
 					break;
 					
 				/* ---------------------------------------------------------------------- */
+			
+				// Menu Creator 
+				// ============================= -->
+				case 'menu_creator':
+					
+					global $post, $wp_query;
+	
+					// Post ID
+					$ptype = get_current_post_type();
+					
+					// Query All Posts of this post type
+					$siteposts = get_posts('post_type=omfg-'.$ptype.'');
+					
+					// Post ID
+					$postid = $wp_query->post->ID;
+					
+					$title = get_the_title($postid);
+					$title = str_replace( " ", "-", $title);
+					$title = strtolower($title);
+					
+					$selection = get_post_meta($post->ID, $field['id'], true);
+					
+					$posts = get_posts('post_type=omfg-'.$title.'');
+					
+					// Makes sure the Menu Creator is ONLY used on OMFG Mobile Pro Post Types
+					if ($ptype == 'omfg-mobile-pro') {
+					
+					// Begin Output
+					$output .= '<div class="menu-items">';
+						
+						$output .='<strong>Site Pages</strong><br/>';
+						
+						$output .= '<ul class="menuitems">';
+						
+						$count = 0;
 
+						foreach ($posts as $p) {
+					
+							$output .= '<li data-id="list_items_' . $p->ID . '" class="list_item menuitem">';
+								$output .= ''.$p->post_title.'';
+								$output .= '<div class="menuitem-options">';
+									$output .='<div class="menuitem-move">Move</div>';
+									$output .='<div class="menuitem-close">Close</div>';
+								$output .= '</div><br/>';
+								$count++;
+							$output .= '</li>';
+							
+						}
+						
+						$output .= '</ul><br/>';
+						
+						$output .='<strong>Menu</strong><br/>';
+						
+						$output .='<div class="menu-builder">';
+						
+							$output .= '<div class="menu-container" data-postid="'.$post->ID.'">';
+																		
+									$count = 0;
+									$omfg_menu = get_post_meta($post->ID, '_omfg_menu', true);
+									
+									foreach($omfg_menu as $key => $postid) {
+									 
+										$title = get_the_title($postid);
+										
+										$output .= '<li id="list_items_' . $postid . '" class="list_item menuitem">';
+											$output .= ''. $title .'';
+											$output .= '<div class="menuitem-options">';
+													$output .='<div class="menuitem-move">Move</div>';
+													$output .='<div class="menuitem-close">Close</div>';
+												$output .= '</div><br/>';
+											//$output .= '' . $postid . '';
+										$output .= '</li>';
+										$count++;
+									
+									}							
+							
+							$output .='</div>';
+						
+						$output .='</div>';
+						
+					$output .= '</div>';
+					
+					} else {
+					
+					$output .= 'Sorry, this meta box is not available for this post type.';
+					
+					}
+					
+					echo $output;
+					
+					break;
+					
+
+			
+				/* ---------------------------------------------------------------------- */
+			
+			
 				default:
 					do_action('cmb_render_' . $field['type'] , $field, $meta);
 			}
@@ -771,7 +867,7 @@ class cmb_Meta_Box {
 function cmb_scripts( $hook ) {
   	if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'page-new.php' || $hook == 'page.php' ) {
 		wp_register_script( 'cmb-timepicker', CMB_META_BOX_URL . 'js/jquery.timePicker.min.js' );
-		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL . 'js/cmb.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox', 'farbtastic', 'jquery-ui-tabs' ) );
+		wp_register_script( 'cmb-scripts', CMB_META_BOX_URL . 'js/cmb.js', array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker', 'media-upload', 'thickbox', 'farbtastic', 'jquery-ui-tabs', 'jquery-ui-draggable', 'jquery-ui-droppable' ) );
 		wp_enqueue_script( 'cmb-timepicker' );
 		wp_enqueue_script( 'cmb-scripts' );
 		wp_register_style( 'cmb-styles', CMB_META_BOX_URL . 'style.css', array( 'thickbox', 'farbtastic' ) );
@@ -795,6 +891,42 @@ function cmb_editor_footer_scripts() { ?>
 	}
 }
 add_action( 'admin_print_footer_scripts', 'cmb_editor_footer_scripts', 99 );
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------- */
+/* Menu Save Function
+/* -------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------- */
+
+function omfg_dad_save_order() {
+	
+	// Get Post ID to Update
+	$post_id = $_POST['post_id'];
+	
+	$omfg_menu = get_post_meta($post_id, '_omfg_menu', true);
+	
+	$list = $omfg_menu;
+	$new_order = $_POST['list_items'];
+	$new_list = array();
+	
+	// update order
+	foreach($new_order as $v) {
+		if(isset($list[$v])) {
+			$new_list[$v] = $list[$v];
+		}
+	}
+	
+	update_post_meta($post_id, '_omfg_menu', $new_order);
+	
+	die();
+}
+add_action('wp_ajax_omfg_dad_save_order', 'omfg_dad_save_order');
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------- */
+/* End Menu Save Function
+/* -------------------------------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------------------------------- */
 
 // Force 'Insert into Post' button from Media Library 
 add_filter( 'get_media_item_args', 'cmb_force_send' );

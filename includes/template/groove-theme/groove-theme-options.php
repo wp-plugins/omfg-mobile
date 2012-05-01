@@ -83,14 +83,3 @@ function omfg_mobile_pro_groovetheme_metabox( array $meta_boxes ) {
 	return $meta_boxes;	
 	
 }
-
-add_action( 'init', 'omfg_groovetheme_initialize_cmb_meta_boxes', 9999 );
-/**
- * Initialize the metabox class.
- */
-function omfg_groovetheme_initialize_cmb_meta_boxes() {
-
-	if ( ! class_exists( 'cmb_Meta_Box' ) )
-		require_once 'init.php';
-
-}

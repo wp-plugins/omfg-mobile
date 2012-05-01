@@ -32,6 +32,69 @@ jQuery(document).ready(function ($) {
 	});
 	
 	/* ------------------------------------------------------------------------- */ 
+	
+	/* ------------------------------------------------------------------------- */ 
+	
+	if ($('.menuitems li').length) {
+	
+		$('.menuitems li').draggable({ 
+			revert: "invalid",
+			connectToSortable: ".menu-container",
+			helper: "clone",
+			opacity: 0.5,
+			update: function(){
+				$(this).attr('id', 'newID');
+			}
+		});
+	
+	}
+		
+	if ($('.menu-container').length) {
+		
+		$('.menu-container').sortable({
+			items: '.list_item',
+			opacity: 0.6,
+			cursor: 'move',
+			axis: 'y',
+			// handle: '.menuitem-move',
+			stop: function(event, ui) {
+				var itemId = ui.item.attr('data-id');
+				ui.item.attr("id", itemId);
+				var postID = $('.menu-container').attr('data-postid');
+				var order = $('.menu-container').sortable('serialize') + '&post_id=' + postID + '&action=omfg_dad_save_order';
+				$.post(ajaxurl, order, function(response) {
+					// alert(order);
+				});
+				
+				$('.menu-container .menuitem .menuitem-options .menuitem-close').click(function(){
+					$(this).parent().parent().remove();
+					var order = $('.menu-container').sortable('serialize') + '&post_id=' + postID + '&action=omfg_dad_save_order';
+					$.post(ajaxurl, order, function(response) {
+						// alert(order);
+					});					
+				});
+			},
+			update: function() {
+				
+			}
+		
+		});
+		
+		$('.menu-container .menuitem .menuitem-options .menuitem-close').click(function(){
+			
+			$(this).parent().parent().remove();
+			var postID = $('.menu-container').attr('data-postid');
+			var order = $('.menu-container').sortable('serialize') + '&post_id=' + postID + '&action=omfg_dad_save_order';
+			$.post(ajaxurl, order, function(response) {
+				// alert(order);
+			});
+					
+		});
+		
+	}
+	
+	/* ------------------------------------------------------------------------- */ 
+	
 
 	/**
 	 * Initialize jQuery UI datepicker (this will be moved inline in a future release)
