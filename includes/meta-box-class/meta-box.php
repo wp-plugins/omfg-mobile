@@ -17,7 +17,7 @@ if( ! class_exists('WP') )
 }
 
 // Meta Box Class
-if ( ! class_exists( 'RW_Meta_Box' ) )
+if ( ! class_exists( 'OMFG_MOBILE_Meta_Box' ) )
 {
 	// Script version, used to add version for scripts and styles
 	define( 'RWMB_VER', '4.1.1' );
@@ -52,7 +52,7 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 	 * @license GNU GPL2
 	 * @package RW Meta Box
 	 */
-	class RW_Meta_Box
+	class OMFG_MOBILE_Meta_Box
 	{
 		/**
 		 * Meta box information
@@ -76,7 +76,7 @@ if ( ! class_exists( 'RW_Meta_Box' ) )
 		 *
 		 * @param array $meta_box Meta box definition
 		 *
-		 * @return \RW_Meta_Box
+		 * @return \OMFG_MOBILE_Meta_Box
 		 */
 		function __construct( $meta_box )
 		{
@@ -534,7 +534,7 @@ HTML;
 		}
 
 		/**
-		 * Apply filters by field class, fallback to RW_Meta_Box method
+		 * Apply filters by field class, fallback to OMFG_MOBILE_Meta_Box method
 		 *
 		 * @param array  $field
 		 * @param string $method_name
@@ -548,7 +548,7 @@ HTML;
 			$args[]	= $field;
 
 			// Call:     field class method
-			// Fallback: RW_Meta_Box method
+			// Fallback: OMFG_MOBILE_Meta_Box method
 			$class = self::get_class_name( $field['type'] );
 			if ( method_exists( $class, $method_name ) )
 			{
@@ -563,7 +563,7 @@ HTML;
 		}
 
 		/**
-		 * Call field class method for actions, fallback to RW_Meta_Box method
+		 * Call field class method for actions, fallback to OMFG_MOBILE_Meta_Box method
 		 *
 		 * @param array  $field
 		 * @param string $method_name
@@ -576,7 +576,7 @@ HTML;
 			$args[] = $field;
 
 			// Call:     field class method
-			// Fallback: RW_Meta_Box method
+			// Fallback: OMFG_MOBILE_Meta_Box method
 			$class = self::get_class_name( $field['type'] );
 			if ( method_exists( $class, $method_name ) )
 			{
@@ -688,7 +688,7 @@ function omfg_mobile_pro_rwmb_debug_print()
 	if ( ! $omfg_mobile_pro_rwmb_debug || ( is_user_logged_in() && is_user_admin() ) )
 		return;
 
-	$html  = '<h3>' . __( 'RW_Meta_Box Debug:', RWMB_TEXTDOMAIN ) . '</h3><pre>';
+	$html  = '<h3>' . __( 'OMFG_MOBILE_Meta_Box Debug:', RWMB_TEXTDOMAIN ) . '</h3><pre>';
 	foreach ( $omfg_mobile_pro_rwmb_debug as $debug )
 	{
 		$html .= "{$debug}<hr />";

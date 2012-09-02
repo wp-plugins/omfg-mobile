@@ -64,9 +64,9 @@ if ( ! class_exists( 'RWMB_File_Field' ) )
 			$ok = $ok && wp_delete_attachment( $attachment_id );
 
 			if ( $ok )
-				RW_Meta_Box::ajax_response( '', 'success' );
+				OMFG_MOBILE_Meta_Box::ajax_response( '', 'success' );
 			else
-				RW_Meta_Box::ajax_response( __( "Error: Cannot delete file", RWMB_TEXTDOMAIN ), 'error' );
+				OMFG_MOBILE_Meta_Box::ajax_response( __( "Error: Cannot delete file", RWMB_TEXTDOMAIN ), 'error' );
 		}
 
 		/**

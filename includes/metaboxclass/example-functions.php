@@ -681,7 +681,7 @@ add_action( 'admin_init', 'omfg_mobile_pro_page_content_register_meta_box');
 
 function omfg_mobile_pro_page_content_register_meta_box()
 {
-	if ( ! class_exists( 'RW_Meta_Box' ) )
+	if ( ! class_exists( 'OMFG_MOBILE_Meta_Box' ) )
 		return;
 
 	global $post, $wp_query, $wpdb;
@@ -713,7 +713,7 @@ function omfg_mobile_pro_page_content_register_meta_box()
 
 	foreach ( $meta_boxes as $meta_box )
 	{
-		new RW_Meta_Box( $meta_box );
+		new OMFG_MOBILE_Meta_Box( $meta_box );
 	}
 }
 
@@ -725,7 +725,7 @@ add_action( 'admin_init', 'omfg_mobile_pro_page_qrcode_meta_box');
 
 function omfg_mobile_pro_page_qrcode_meta_box()
 {
-	if ( ! class_exists( 'RW_Meta_Box' ) )
+	if ( ! class_exists( 'OMFG_MOBILE_Meta_Box' ) )
 		return;
 
 	global $post, $wp_query, $wpdb;
@@ -758,6 +758,6 @@ function omfg_mobile_pro_page_qrcode_meta_box()
 
 	foreach ( $meta_boxes as $meta_box )
 	{
-		new RW_Meta_Box( $meta_box );
+		new OMFG_MOBILE_Meta_Box( $meta_box );
 	}
 }

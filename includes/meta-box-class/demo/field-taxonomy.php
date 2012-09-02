@@ -207,7 +207,7 @@ if ( ! class_exists( 'RWMB_Taxonomy_Field' ) )
  */
 function PREFIX_register_meta_boxes()
 {
-	if ( ! class_exists( 'RW_Meta_Box' ) )
+	if ( ! class_exists( 'OMFG_MOBILE_Meta_Box' ) )
 		return;
 
 	$prefix = 'YOUR_PREFIX_';
@@ -233,7 +233,7 @@ function PREFIX_register_meta_boxes()
 		)
 	);
 
-	new RW_Meta_Box( $tax_box );
+	new OMFG_MOBILE_Meta_Box( $tax_box );
 }
 
 add_action( 'admin_init', 'PREFIX_register_meta_boxes' );

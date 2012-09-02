@@ -65,7 +65,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 				) );
 			}
 
-			RW_Meta_Box::ajax_response( __( 'Order saved', RWMB_TEXTDOMAIN ), 'success' );
+			OMFG_MOBILE_Meta_Box::ajax_response( __( 'Order saved', RWMB_TEXTDOMAIN ), 'success' );
 		}
 
 		/**
@@ -141,7 +141,7 @@ if ( ! class_exists( 'RWMB_Image_Field' ) )
 		{
 			global $wpdb;
 			
-			$meta = RW_Meta_Box::meta( $meta, $post_id, $saved, $field );
+			$meta = OMFG_MOBILE_Meta_Box::meta( $meta, $post_id, $saved, $field );
 			
 			if ( empty( $meta ) )
 				return array();

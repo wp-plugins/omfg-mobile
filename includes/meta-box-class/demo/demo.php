@@ -224,11 +224,11 @@ function YOUR_PREFIX_register_meta_boxes()
 	global $meta_boxes;
 
 	// Make sure there's no errors when the plugin is deactivated or during upgrade
-	if ( class_exists( 'RW_Meta_Box' ) )
+	if ( class_exists( 'OMFG_MOBILE_Meta_Box' ) )
 	{
 		foreach ( $meta_boxes as $meta_box )
 		{
-			new RW_Meta_Box( $meta_box );
+			new OMFG_MOBILE_Meta_Box( $meta_box );
 		}
 	}
 }

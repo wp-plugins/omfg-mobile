@@ -27,7 +27,7 @@ msgid "&#8211;"
 msgstr ""
 
 #: ../meta-box.php:718
-msgid "RW_Meta_Box Debug:"
+msgid "OMFG_MOBILE_Meta_Box Debug:"
 msgstr ""
 
 #: ../inc/fields/color.php:45
